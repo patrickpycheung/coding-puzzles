@@ -14,7 +14,7 @@ import com.test.model.Node;
 import com.test.service.BinaryTreeService;
 
 @SpringBootTest
-public class CodingPuzzlesBinaryTreeTest {
+public class BinaryTreeTest {
 
 	@Autowired
 	private BinaryTree binaryTree;
