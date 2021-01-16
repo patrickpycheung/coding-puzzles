@@ -8,7 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class FibonacciService {
 
-	public List<Integer> printFibonacciSeries(int num) {
+	public static List<Integer> printFibonacciSeries(int num) {
+
+		/**
+		 * Method 1
+		 * 
+		 * By for loop
+		 */
 
 		List<Integer> sequenceList = new ArrayList<>();
 
@@ -44,5 +50,38 @@ public class FibonacciService {
 		}
 
 		return sequenceList;
+
+		/*
+		 * Method 2
+		 * 
+		 * By recursive function
+		 */
+
+//		// Final result list
+//		List<Integer> sequenceList = new ArrayList<>();
+//
+//		for (int i = 1; i <= num; i++) {
+//			int currentElement = getFibonacciRecursive(i);
+//			System.out.print(currentElement + " ");
+//			sequenceList.add(currentElement);
+//		}
+//
+//		return sequenceList;
+//	}
+//
+//	private static int getFibonacciRecursive(int n) {
+//		if (n == 1) {
+//			return 1;
+//		}
+//
+//		if (n == 2) {
+//			return 1;
+//		}
+//
+//		return getFibonacciRecursive(n - 1) + getFibonacciRecursive(n - 2);
+	}
+
+	public static void main(String args[]) {
+		printFibonacciSeries(10);
 	}
 }
