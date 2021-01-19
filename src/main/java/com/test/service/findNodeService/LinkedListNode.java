@@ -1,4 +1,4 @@
-package com.test.service;
+package com.test.service.findNodeService;
 
 public class LinkedListNode {
 	public LinkedListNode next;

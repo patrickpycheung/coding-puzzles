@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.test.service.FindNodeService;
-import com.test.service.LinkedListNode;
+import com.test.service.findNodeService.FindNodeService;
+import com.test.service.findNodeService.LinkedListNode;
 
 @SpringBootTest
 public class FindNodeServiceTest {
