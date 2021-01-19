@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.test.service.FindRouteService.FindRouteService;
-import com.test.service.FindRouteService.Graph;
-import com.test.service.FindRouteService.Node;
+import com.test.service.findRouteService.FindRouteService;
+import com.test.service.findRouteService.Graph;
+import com.test.service.findRouteService.Node;
 
 @SpringBootTest
 public class FindRouteServiceTest {
