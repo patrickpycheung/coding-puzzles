@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.test.service.BinaryTreeService.BinaryTree;
-import com.test.service.BinaryTreeService.BinaryTreeService;
-import com.test.service.BinaryTreeService.Node;
+import com.test.service.binaryTreeService.BinaryTree;
+import com.test.service.binaryTreeService.BinaryTreeService;
+import com.test.service.binaryTreeService.Node;
 
 @SpringBootTest
 public class BinaryTreeTest {

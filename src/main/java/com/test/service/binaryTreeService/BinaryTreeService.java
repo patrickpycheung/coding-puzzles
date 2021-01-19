@@ -1,4 +1,4 @@
-package com.test.service.BinaryTreeService;
+package com.test.service.binaryTreeService;
 
 import java.util.LinkedList;
 import java.util.List;
