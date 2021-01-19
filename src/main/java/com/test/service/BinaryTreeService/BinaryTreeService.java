@@ -1,13 +1,10 @@
-package com.test.service;
+package com.test.service.BinaryTreeService;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.test.model.BinaryTree;
-import com.test.model.Node;
 
 @Service
 public class BinaryTreeService {
