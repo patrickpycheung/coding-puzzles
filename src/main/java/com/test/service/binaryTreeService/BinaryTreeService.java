@@ -3,22 +3,22 @@ package com.test.service.binaryTreeService;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BinaryTreeService {
 
-	@Autowired
-	private BinaryTree binaryTree;
+	private List<List<Integer>> listOfListOfNodes = new LinkedList<>();
 
-	List<List<Integer>> listOfListOfNodes = new LinkedList<>();
+	// Initial maxHeight is height of the root node
+	private int maxHeight = 1;
 
-	public void addElementToBinaryTree(int i) {
-		binaryTree.setRootNode(addRecursive(binaryTree.getRootNode(), i));
+	public void addElementToBinaryTree(BinaryTree binaryTree, int i) {
+		binaryTree.setRootNode(addRecursive(binaryTree, binaryTree.getRootNode(), i));
+		return;
 	}
 
-	private Node addRecursive(Node node, int i) {
+	private Node addRecursive(BinaryTree binaryTree, Node node, int i) {
 		if (node == null) {
 			// Add new node
 			Node newNode = new Node();
@@ -31,15 +31,15 @@ public class BinaryTreeService {
 		// Current node exist, can't store at this node, we need to add child node
 
 		if (i < node.getValue()) {
-			node.setLeftNode(addRecursive(node.getLeftNode(), i));
+			node.setLeftNode(addRecursive(binaryTree, node.getLeftNode(), i));
 		} else {
-			node.setRightNode(addRecursive(node.getRightNode(), i));
+			node.setRightNode(addRecursive(binaryTree, node.getRightNode(), i));
 		}
 
 		return node;
 	}
 
-	public Node findElementInBinaryTree(int i) {
+	public Node findElementInBinaryTree(BinaryTree binaryTree, int i) {
 		Node node = findRecursive(binaryTree.getRootNode(), i);
 		return node;
 	}
@@ -75,8 +75,7 @@ public class BinaryTreeService {
 		return node;
 	}
 
-	public List<List<Integer>> getListOfListOfNodes() {
-		listOfListOfNodes = new LinkedList<>();
+	public List<List<Integer>> getListOfListOfNodes(BinaryTree binaryTree) {
 		// Root node would have node depth of 0
 		getListOfNodeRecursive(binaryTree.getRootNode(), 0);
 		return listOfListOfNodes;
@@ -107,5 +106,77 @@ public class BinaryTreeService {
 			// Go down 1 depth to handle the right node
 			getListOfNodeRecursive(node.getRightNode(), nodeDepth + 1);
 		}
+	}
+
+	public boolean isBinaryTreeBalanced(BinaryTree binaryTree) {
+		// Initialize maxHeight;
+		maxHeight = 1;
+
+		Node rootNode = binaryTree.getRootNode();
+
+		// Default height of both sides is 1 which is the height of the root node
+		int leftHeight = 1;
+		int rightHeight = 1;
+
+		if (rootNode.getLeftNode() != null) {
+			// Left child exist
+
+			// Add left child height
+			maxHeight++;
+
+			findLargestHeightRecursive(rootNode.getLeftNode());
+			leftHeight = maxHeight;
+		}
+
+		// Reset maxHeight
+		maxHeight = 1;
+
+		if (rootNode.getRightNode() != null) {
+			// Right child exist
+
+			// Add right child height
+			maxHeight++;
+
+			findLargestHeightRecursive(rootNode.getRightNode());
+			rightHeight = maxHeight;
+		}
+
+		// Comparison
+		if (Math.abs(leftHeight - rightHeight) > 1) {
+			// Height difference over limit
+
+			return false;
+		}
+
+		return true;
+	}
+
+	private void findLargestHeightRecursive(Node node) {
+
+		if (node.getLeftNode() == null && node.getRightNode() == null) {
+			// No more children under this node
+
+			return;
+		}
+
+		if (node.getLeftNode() != null) {
+			// Left child exists
+
+			findLargestHeightRecursive(node.getLeftNode());
+		}
+
+		if (node.getRightNode() != null) {
+			// Right child exists
+
+			findLargestHeightRecursive(node.getRightNode());
+		}
+
+		if (node.getLeftNode() != null || node.getRightNode() != null) {
+			// This node has either or both of left child / right child
+
+			// Add current node to height
+			maxHeight++;
+		}
+
 	}
 }
